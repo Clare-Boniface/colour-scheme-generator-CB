@@ -1,12 +1,21 @@
-* {
-  box-sizing: border-box;
+/* Define CSS Variables */
+
+:root {
+  --primary-color: #d7d2cc;
+  --secondary-color: #304352;
+  --dark-bg: #1f2937;
+  --light-bg: #ebebeb;
+  --dark-text: #070707;
+  --light-text: white;
 }
 
-html {
+/* Global Styles */
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 body {
   max-width: 1400px;
   min-width: 320px;
@@ -14,6 +23,9 @@ body {
   padding: 0.25em;
   font-family: "Inter", sans-serif;
 }
+
+/* Header and Main Styles */
+
 header {
   display: flex;
   align-items: center;
@@ -29,6 +41,8 @@ h1 {
   font-size: 1.2rem;
   margin-top: 0;
 }
+
+/* Form and Colour Selectors */
 form {
   height: 90px;
   display: flex;
@@ -64,6 +78,8 @@ select {
   cursor: pointer;
   padding-left: 1em;
 }
+
+/* Button Styles */
 button {
   display: flex;
   font-family: inherit;
@@ -72,7 +88,7 @@ button {
   border-radius: 10px;
   border: none;
   line-height: 16px;
-  color: white;
+  color: var(--light-text);
   font-size: 0.8rem;
   font-weight: 700;
   padding-top: 1em;
@@ -80,6 +96,7 @@ button {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-shadow: 1px 1px black;
 }
 
 .get-color-btn {
@@ -100,6 +117,9 @@ button {
   gap: 1em;
   width: 100%;
 }
+
+/* Colour Scheme Container */
+
 .color-scheme-container {
   display: flex;
   height: 450px;
@@ -174,7 +194,7 @@ button {
   opacity: 0.8;
   color: black;
   padding: 0.6em;
-  color: #070707;
+  color: var(--dark-text);
   text-align: center;
   left: 50%;
   transform: translateX(-50%);
@@ -182,19 +202,20 @@ button {
   font-size: 0.8rem;
 }
 
+/* Dark Mode Styles */
 .dark-mode {
-  background-color: #1f2937;
-  color: white;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
 }
 .dark-mode .get-color-btn {
   background-color: #3d4b60;
 }
 .dark-mode .mode-selector {
-  color: #fff;
-  background-color: #1f2937;
+  color: var(--light-text);
+  background-color: var(--dark-bg);
 }
 .dark-mode .hex-code {
-  color: #fff;
+  color: var(--light-text);
 }
 .dark-mode p.color-name,
 .dark-mode .snackbar.show {
@@ -202,6 +223,8 @@ button {
   background-color: black;
   opacity: 0.8;
 }
+
+/* Dark / Light Mode Toggle Selector */
 label {
   width: 50px;
   height: 20px;
@@ -232,7 +255,7 @@ label:after {
   visibility: hidden;
 }
 .toggle:checked + label {
-  background-color: white;
+  background-color: var(--light-text);
   transition: 0.3s;
 }
 
@@ -243,11 +266,13 @@ label:after {
   transition: 0.3s;
 }
 
+/* Hover and Focus States */
 button:hover,
 button:focus {
   opacity: 0.9;
   transform: scale(1.01);
   transition: ease-in-out;
+  text-shadow: 2px 2px black;
 }
 
 .color-name:hover,
