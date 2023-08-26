@@ -6,8 +6,10 @@ const colorSchemeContainerEl = document.getElementById(
 const mode = document.getElementById("mode");
 const seedColorEl = document.getElementById("seed-color");
 const snackbar = document.getElementById("snackbar");
+const toggleBtnEl = document.getElementById("darkmode-toggle");
 let currentSeedColor = "";
 let html = "";
+
 const hexCharacters = [
   "a",
   "b",
@@ -27,32 +29,30 @@ const hexCharacters = [
   "0",
 ];
 
-// console.log(hexCharacters);
+generateColor();
 
-randomColorBtn.addEventListener("click", function (e) {
+//Event Listeners
+
+randomColorBtn.addEventListener("click", getRandomColor);
+// colorBtnEl.addEventListener("click", generateColor);
+colorSchemeContainerEl.addEventListener("click", copyHexCode);
+toggleBtnEl.addEventListener("click", toggle);
+
+function getRandomColor(e) {
   e.preventDefault();
   let hexNumberArray = [];
-
   for (let i = 0; i < 6; i++) {
     let randomIndex = Math.floor(Math.random() * hexCharacters.length);
-    let randomCharacter = hexCharacters[randomIndex];
-    hexNumberArray.push(randomCharacter);
+    hexNumberArray.push(hexCharacters[randomIndex]);
   }
   let hexColor = `#${hexNumberArray.join("")}`;
-
   seedColorEl.value = hexColor;
   generateColor();
-});
+}
 
-generateColor();
 colorBtnEl.addEventListener("click", function (e) {
   e.preventDefault();
   generateColor();
-});
-
-seedColorEl.addEventListener("input", function () {
-  // Assign the value here
-  console.log(currentSeedColor);
 });
 
 async function generateColor() {
@@ -79,16 +79,8 @@ async function generateColor() {
   }
 }
 
-mode.addEventListener("input", function () {
-  console.log(mode.value);
-});
-
-colorSchemeContainerEl.addEventListener("click", copyHexCode);
-
 function copyHexCode(event) {
   const clickedElement = event.target;
-
-  // Check if the clicked element has the class "hex-code" or "color-column"
   if (
     clickedElement.classList.contains("hex-code") ||
     clickedElement.classList.contains("color-column")
@@ -99,18 +91,9 @@ function copyHexCode(event) {
 
     const hexCode = hexCodeElement.textContent.trim();
 
-    navigator.clipboard
-      .writeText(hexCode)
+    copyToClipboard(hexCode)
       .then(() => {
-        hexCodeElement.textContent = "Copied!";
-        hexCodeElement.classList.add("click-hex-code");
-
-        setTimeout(() => {
-          hexCodeElement.textContent = hexCode;
-          hexCodeElement.classList.remove("click-hex-code");
-        }, 2000);
-
-        console.log("Hex code copied");
+        displayCopied(hexCodeElement, hexCode);
         showSnackbar();
       })
       .catch((error) => {
@@ -118,18 +101,28 @@ function copyHexCode(event) {
       });
   }
 }
-const toggleBtnEl = document.getElementById("darkmode-toggle");
-toggleBtnEl.addEventListener("click", toggle);
+
+function copyToClipboard(text) {
+  return navigator.clipboard.writeText(text);
+}
+
+function displayCopied(element, hexCode) {
+  element.textContent = "Copied!";
+  element.classList.add("click-hex-code");
+
+  setTimeout(() => {
+    element.textContent = hexCode;
+    element.classList.remove("click-hex-code");
+  }, 2000);
+}
+
 function toggle() {
   document.body.classList.toggle("dark-mode");
-  //   toggleBtnEl.textContent === "☀️"
-  //     ? (toggleBtnEl.textContent = "🌑")
-  //     : (toggleBtnEl.textContent = "☀️");
 }
 
 function showSnackbar() {
-  snackbar.classList.add("show"); // Add the "show" class to show the snackbar
+  snackbar.classList.add("show");
   setTimeout(function () {
-    snackbar.classList.remove("show"); // Remove the "show" class after a delay
+    snackbar.classList.remove("show");
   }, 2000);
 }

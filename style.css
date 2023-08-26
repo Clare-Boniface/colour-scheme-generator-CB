@@ -6,6 +6,7 @@
   --dark-bg: #1f2937;
   --light-bg: #ebebeb;
   --dark-text: #070707;
+  --darkest-text: black;
   --light-text: white;
 }
 
@@ -181,6 +182,11 @@ button {
   cursor: pointer;
 }
 
+/* Footer */
+.footer-text {
+  font-size: 0.6rem;
+  text-align: center;
+}
 .snackbar {
   visibility: hidden;
   position: fixed;
