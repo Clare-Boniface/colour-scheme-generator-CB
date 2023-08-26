@@ -1,0 +1,352 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 1400px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0.25em;
+  font-family: "Inter", sans-serif;
+}
+header {
+  display: flex;
+  align-items: center;
+  margin: 1em;
+  justify-content: space-between;
+}
+main {
+  margin: 1em;
+}
+h1 {
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+form {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23px;
+  cursor: pointer;
+}
+
+.color-select-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+input[type="color"] {
+  height: 44px;
+  width: 42px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+select {
+  width: 80%;
+  height: 42px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-left: 1em;
+}
+button {
+  display: flex;
+  font-family: inherit;
+  width: 50%;
+  height: 42px;
+  border-radius: 10px;
+  border: none;
+  line-height: 16px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.get-color-btn {
+  background: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+}
+.random-color-btn {
+  background: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+}
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1em;
+  width: 100%;
+}
+.color-scheme-container {
+  display: flex;
+  height: 450px;
+  padding-bottom: 2em;
+  position: relative;
+  margin-top: 2em;
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+}
+
+.color-column {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  border: 1px solid transparent;
+}
+.color-name {
+  /* color: black; */
+  font-size: 0.6rem;
+  /* width: 20%; */
+  text-align: center;
+  /* align-self: center;
+  justify-self: center; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  /* cursor: pointer; */
+  background-color: white;
+  width: 95%;
+  border-radius: 10px;
+  /* display: flex; */
+  height: 40px;
+  margin: 0 auto;
+  /* align-self: center;
+  justify-self: center; */
+  margin-top: 1em;
+
+  opacity: 0.8;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hex-code {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-self: center;
+  font-size: 0.7rem;
+  color: #2b283a;
+  cursor: pointer;
+}
+
+.click-hex-code {
+  font-weight: bold;
+  transform: scale(1.1);
+  color: black;
+  cursor: pointer;
+}
+
+.snackbar {
+  visibility: hidden;
+  position: fixed;
+  border-radius: 10px;
+}
+
+.snackbar.show {
+  visibility: visible;
+  font-weight: bold;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  padding: 0.6em;
+  color: #070707;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50%;
+  font-size: 0.8rem;
+}
+
+.dark-mode {
+  background-color: #1f2937;
+  color: white;
+}
+.dark-mode .get-color-btn {
+  background-color: #3d4b60;
+}
+.dark-mode .mode-selector {
+  color: #fff;
+  background-color: #1f2937;
+}
+.dark-mode .hex-code {
+  color: #fff;
+}
+.dark-mode p.color-name,
+.dark-mode .snackbar.show {
+  color: white;
+  background-color: black;
+  opacity: 0.8;
+}
+label {
+  width: 50px;
+  height: 20px;
+  position: relative;
+  display: block;
+  background-color: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+label:after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  top: 1px;
+  left: 1px;
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.toggle {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.toggle:checked + label {
+  background-color: white;
+  transition: 0.3s;
+}
+
+.toggle:checked + label:after {
+  left: 49px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+  transition: 0.3s;
+}
+
+button:hover,
+button:focus {
+  opacity: 0.9;
+  transform: scale(1.01);
+  transition: ease-in-out;
+}
+
+.color-name:hover,
+.dark-mode .color-name:hover,
+.color-name:focus,
+.dark-mode .color-name:focus {
+  opacity: 0.9;
+  transform: scale(1.01);
+  transition: ease-in-out;
+}
+
+.hex-code:hover,
+.hex-code:focus {
+  font-weight: bold;
+  transition: ease-in-out;
+}
+input[type="color"]:hover,
+input[type="color"]:focus {
+  transform: scale(1.1);
+  transition: ease-in-out;
+}
+
+.color-column:hover,
+.color-column:focus {
+  border: 1px solid white;
+  transition: ease-in-out;
+}
+
+@media (min-width: 425px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .get-color-btn,
+  .random-color-btn {
+    font-size: 1rem;
+  }
+  input[type="color"] {
+    width: 100px;
+  }
+  .mode-selector {
+    font-size: 1rem;
+  }
+  .color-name {
+    font-size: 0.9rem;
+    height: 50px;
+  }
+  .hex-code {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 1em;
+  }
+  h1 {
+    font-size: 2.3rem;
+  }
+  .color-select-container {
+    margin-bottom: 0;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+  }
+  .mode-selector {
+    font-size: 1.1rem;
+  }
+
+  input[type="color"] {
+    width: 20%;
+  }
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
+    gap: 1em;
+  }
+  .get-color-btn {
+    font-size: 1.1rem;
+    padding: 0.5em 1em;
+  }
+  .random-color-btn {
+    font-size: 1.1rem;
+    padding: 0.5em 1em;
+  }
+
+  .color-scheme-container {
+    margin-top: 1em;
+  }
+  .color-name,
+  .hex-code {
+    font-size: 1.1rem;
+  }
+  .snackbar.show {
+    bottom: 40%;
+  }
+}

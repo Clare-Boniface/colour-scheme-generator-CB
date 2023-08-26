@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colour Scheme Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Colour Scheme Generator</h1>
+      <input type="checkbox" id="darkmode-toggle" class="toggle" />
+      <label for="darkmode-toggle"></label>
+    </header>
+    <main>
+      <form>
+        <div class="color-select-container">
+          <input
+            type="color"
+            id="seed-color"
+            class="seed-color"
+            value="#ff0000"
+          />
+          <select name="mode" id="mode" class="mode-selector">
+            <option value="monochrome">Monochrome</option>
+            <option value="monochrome-dark">Monochrome-dark</option>
+            <option value="monochrome-light">Monochrome-light</option>
+            <option value="analogic">Analogic</option>
+            <option value="complement">Complement</option>
+            <option value="analogic-complement">Analogic-complement</option>
+            <option value="triad">Triad</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="submit" id="color-btn" class="get-color-btn">
+            Get colour scheme
+          </button>
+          <button id="random-color-btn" class="random-color-btn">
+            Random Colour Picker
+          </button>
+        </div>
+      </form>
+      <section
+        id="color-scheme-container"
+        class="color-scheme-container"
+      ></section>
+    </main>
+    <footer id="snackbar" class="snackbar">Copied to clipboard</footer>
+    <script src="script.js"></script>
+  </body>
+</html>
