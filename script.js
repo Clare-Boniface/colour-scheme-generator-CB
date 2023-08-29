@@ -56,27 +56,23 @@ colorBtnEl.addEventListener("click", function (e) {
 });
 
 async function generateColor() {
-  try {
-    currentSeedColor = seedColorEl.value.substring(1);
-    const response = await fetch(
-      `https://www.thecolorapi.com/scheme?hex=${currentSeedColor}&mode=${mode.value}&count=5`
-    );
-    const data = await response.json();
-    console.log(data);
+  currentSeedColor = seedColorEl.value.substring(1);
+  const response = await fetch(
+    `https://www.thecolorapi.com/scheme?hex=${currentSeedColor}&mode=${mode.value}&count=5`
+  );
+  const data = await response.json();
+  console.log(data);
 
-    const colorDivs = data.colors
-      .map((color) => {
-        const hexColor = color.hex.value;
-        return `<div class="color-column" style="background-color: ${hexColor}">
-     <p class="color-name">${color.name.value}</p>
-     <p class="hex-code" id="hex-code">${hexColor}</p>
+  const colorDivs = data.colors
+    .map((color) => {
+      const hexColor = color.hex.value;
+      return `<div class="color-column flex" style="background-color: ${hexColor}">
+     <p class="color-name flex">${color.name.value}</p>
+     <p class="hex-code flex" id="hex-code">${hexColor}</p>
      </div>`;
-      })
-      .join("");
-    colorSchemeContainerEl.innerHTML = colorDivs;
-  } catch (error) {
-    console.error("Error fetching color data", error);
-  }
+    })
+    .join("");
+  colorSchemeContainerEl.innerHTML = colorDivs;
 }
 
 function copyHexCode(event) {
@@ -91,14 +87,10 @@ function copyHexCode(event) {
 
     const hexCode = hexCodeElement.textContent.trim();
 
-    copyToClipboard(hexCode)
-      .then(() => {
-        displayCopied(hexCodeElement, hexCode);
-        showSnackbar();
-      })
-      .catch((error) => {
-        console.error("Copying to clipboard failed:", error);
-      });
+    copyToClipboard(hexCode).then(() => {
+      displayCopied(hexCodeElement, hexCode);
+      showSnackbar();
+    });
   }
 }
 

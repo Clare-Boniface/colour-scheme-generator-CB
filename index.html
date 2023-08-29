@@ -13,19 +13,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
+    <header class="flex">
       <h1>Colour Scheme Generator</h1>
-      <input type="checkbox" id="darkmode-toggle" class="toggle" />
-      <label for="darkmode-toggle"></label>
+      <input
+        type="checkbox"
+        id="darkmode-toggle"
+        class="toggle"
+        aria-labelledby="darkmode-toggle-button"
+      />
+      <label for="darkmode-toggle" id="darkmode-toggle-label"></label>
     </header>
     <main>
-      <form>
-        <div class="color-select-container">
+      <form class="flex">
+        <div class="color-select-container flex">
           <input
             type="color"
             id="seed-color"
             class="seed-color"
             value="#ff0000"
+            aria-label="Seed Colour"
           />
           <select name="mode" id="mode" class="mode-selector">
             <option value="monochrome">Monochrome</option>
@@ -37,23 +43,23 @@
             <option value="triad">Triad</option>
           </select>
         </div>
-        <div class="button-container">
-          <button type="submit" id="color-btn" class="get-color-btn">
+        <div class="button-container flex">
+          <button type="submit" id="color-btn" class="get-color-btn flex">
             Get colour scheme
           </button>
-          <button id="random-color-btn" class="random-color-btn">
+          <button id="random-color-btn" class="random-color-btn flex">
             Random Colour Picker
           </button>
         </div>
       </form>
       <section
         id="color-scheme-container"
-        class="color-scheme-container"
+        class="color-scheme-container flex"
       ></section>
     </main>
     <footer>
       <p id="snackbar" class="snackbar">Copied to clipboard</p>
-      <p class="footer-text">&copy 2023 Clare Boniface</p>
+      <p class="footer-text">&copy; 2023 Clare Boniface</p>
     </footer>
     <script src="script.js"></script>
   </body>

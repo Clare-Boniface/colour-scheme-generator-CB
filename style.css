@@ -1,73 +1,83 @@
 /* Define CSS Variables */
 
 :root {
-  --primary-color: #d7d2cc;
-  --secondary-color: #304352;
   --dark-bg: #1f2937;
-  --light-bg: #ebebeb;
   --dark-text: #070707;
   --darkest-text: black;
+  --hex-text: #2b283a;
   --light-text: white;
+  --heading-fs-small: 1.2rem;
+  --heading-fs-medium: 1.5rem;
+  --heading-fs-large: 2.3rem;
+  --text-fs-xx-small: 0.6rem;
+  --text-fs-x-small: 0.7rem;
+  --text-fs-small: 0.8rem;
+  --text-fs-medium: 0.9rem;
+  --text-fs-x-large: 1.1rem;
 }
 
 /* Global Styles */
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+p {
   margin: 0;
   padding: 0;
 }
+
 body {
+  font-family: "Inter", sans-serif;
   max-width: 1400px;
   min-width: 320px;
   margin: 0 auto;
   padding: 0.25em;
-  font-family: "Inter", sans-serif;
 }
 
-/* Header and Main Styles */
+/* Header Main and Container Styles */
 
-header {
-  display: flex;
-  align-items: center;
-  margin: 1em;
-  justify-content: space-between;
-}
+header,
 main {
   margin: 1em;
 }
+
 h1 {
-  text-align: left;
-  margin-bottom: 0;
-  font-size: 1.2rem;
-  margin-top: 0;
+  font-size: var(--heading-fs-small);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Form and Colour Selectors */
+
 form {
-  height: 90px;
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 23px;
+  height: 90px;
+  margin-top: 1.5em;
   cursor: pointer;
 }
 
 .color-select-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   width: 100%;
-  gap: 1em;
   margin-bottom: 1em;
+  gap: 1em;
   cursor: pointer;
 }
+
 input[type="color"] {
   height: 44px;
   width: 42px;
-  border-radius: 10px;
   border: none;
+}
+
+input[type="color"],
+select {
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -75,34 +85,32 @@ select {
   width: 80%;
   height: 42px;
   border: 1px solid #d1d5db;
-  border-radius: 10px;
-  cursor: pointer;
   padding-left: 1em;
 }
 
 /* Button Styles */
+
 button {
-  display: flex;
   font-family: inherit;
+  text-shadow: 1px 1px black;
   width: 50%;
   height: 42px;
   border-radius: 10px;
   border: none;
   line-height: 16px;
   color: var(--light-text);
-  font-size: 0.8rem;
+  font-size: var(--text-fs-medium);
   font-weight: 700;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  align-items: center;
-  justify-content: center;
+  padding: 1em 0;
+  text-align: center;
   cursor: pointer;
-  text-shadow: 1px 1px black;
 }
 
 .get-color-btn {
   background: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+  justify-content: center;
 }
+
 .random-color-btn {
   background: linear-gradient(
     -225deg,
@@ -111,10 +119,10 @@ button {
     #ff1361 67%,
     #fff800 100%
   );
+  justify-content: center;
 }
+
 .button-container {
-  display: flex;
-  justify-content: space-evenly;
   gap: 1em;
   width: 100%;
 }
@@ -122,115 +130,106 @@ button {
 /* Colour Scheme Container */
 
 .color-scheme-container {
-  display: flex;
+  position: relative;
   height: 450px;
   padding-bottom: 2em;
-  position: relative;
   margin-top: 2em;
   border-radius: 0 0 8px 8px;
   cursor: pointer;
 }
 
 .color-column {
-  display: flex;
   flex-direction: column;
   width: 20%;
   height: 100%;
   border: 1px solid transparent;
 }
+
 .color-name {
-  /* color: black; */
-  font-size: 0.6rem;
-  /* width: 20%; */
+  font-size: var(--text-fs-xx-small);
+  font-weight: bold;
   text-align: center;
-  /* align-self: center;
-  justify-self: center; */
   justify-content: center;
-  align-items: center;
-  display: flex;
-  /* cursor: pointer; */
   background-color: white;
   width: 95%;
   border-radius: 10px;
-  /* display: flex; */
   height: 40px;
-  margin: 0 auto;
-  /* align-self: center;
-  justify-self: center; */
-  margin-top: 1em;
-
+  margin: 1em auto 0;
   opacity: 0.8;
-  font-weight: bold;
   cursor: pointer;
 }
 
 .hex-code {
   position: absolute;
   bottom: 0;
-  margin: auto;
-  display: flex;
-  align-self: center;
-  font-size: 0.7rem;
-  color: #2b283a;
+  font-size: var(--text-fs-x-small);
+  color: var(----hex-text);
   cursor: pointer;
 }
 
 .click-hex-code {
   font-weight: bold;
   transform: scale(1.1);
-  color: black;
+  color: var(--darkest-text);
   cursor: pointer;
 }
 
 /* Footer */
+
 .footer-text {
-  font-size: 0.6rem;
+  font-size: var(--text-fs-xx-small);
   text-align: center;
 }
+
 .snackbar {
-  visibility: hidden;
   position: fixed;
+  visibility: hidden;
   border-radius: 10px;
 }
 
 .snackbar.show {
-  visibility: visible;
+  font-size: var(--text-fs-small);
   font-weight: bold;
+  color: var(--dark-text);
+  visibility: visible;
   background-color: white;
   opacity: 0.8;
-  color: black;
   padding: 0.6em;
-  color: var(--dark-text);
   text-align: center;
-  left: 50%;
   transform: translateX(-50%);
   bottom: 50%;
-  font-size: 0.8rem;
+  left: 50%;
 }
 
 /* Dark Mode Styles */
+
 .dark-mode {
   background-color: var(--dark-bg);
   color: var(--light-text);
 }
+
 .dark-mode .get-color-btn {
   background-color: #3d4b60;
 }
+
 .dark-mode .mode-selector {
   color: var(--light-text);
   background-color: var(--dark-bg);
 }
+
 .dark-mode .hex-code {
   color: var(--light-text);
 }
+
 .dark-mode p.color-name,
 .dark-mode .snackbar.show {
-  color: white;
+  color: var(--light-text);
   background-color: black;
   opacity: 0.8;
 }
 
 /* Dark / Light Mode Toggle Selector */
+
 label {
   width: 50px;
   height: 20px;
@@ -255,11 +254,13 @@ label:after {
   border-radius: 180px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
+
 .toggle {
   width: 0;
   height: 0;
   visibility: hidden;
 }
+
 .toggle:checked + label {
   background-color: var(--light-text);
   transition: 0.3s;
@@ -273,6 +274,7 @@ label:after {
 }
 
 /* Hover and Focus States */
+
 button:hover,
 button:focus {
   opacity: 0.9;
@@ -295,6 +297,7 @@ button:focus {
   font-weight: bold;
   transition: ease-in-out;
 }
+
 input[type="color"]:hover,
 input[type="color"]:focus {
   transform: scale(1.1);
@@ -309,24 +312,19 @@ input[type="color"]:focus {
 
 @media (min-width: 425px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: var(--heading-fs-medium);
   }
-  .get-color-btn,
-  .random-color-btn {
-    font-size: 1rem;
+  button,
+  .mode-selector,
+  .color-name,
+  .hex-code {
+    font-size: var(--text-fs-medium);
   }
   input[type="color"] {
     width: 100px;
   }
-  .mode-selector {
-    font-size: 1rem;
-  }
   .color-name {
-    font-size: 0.9rem;
     height: 50px;
-  }
-  .hex-code {
-    font-size: 0.9rem;
   }
 }
 
@@ -335,22 +333,11 @@ input[type="color"]:focus {
     padding: 1em;
   }
   h1 {
-    font-size: 2.3rem;
+    font-size: var(--heading-fs-large);
   }
   .color-select-container {
     margin-bottom: 0;
   }
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1em;
-  }
-  .mode-selector {
-    font-size: 1.1rem;
-  }
-
   input[type="color"] {
     width: 20%;
   }
@@ -361,21 +348,17 @@ input[type="color"]:focus {
     margin-top: 0;
     gap: 1em;
   }
-  .get-color-btn {
-    font-size: 1.1rem;
+  button {
+    font-size: var(--text-fs-x-large);
     padding: 0.5em 1em;
   }
-  .random-color-btn {
-    font-size: 1.1rem;
-    padding: 0.5em 1em;
-  }
-
   .color-scheme-container {
     margin-top: 1em;
   }
   .color-name,
-  .hex-code {
-    font-size: 1.1rem;
+  .hex-code,
+  .mode-selector {
+    font-size: var(--text-fs-x-large);
   }
   .snackbar.show {
     bottom: 40%;
